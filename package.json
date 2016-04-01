@@ -1,0 +1,35 @@
+{
+  "name": "greenkeeper-postpublish",
+  "version": "1.0.0",
+  "description": "postpublish hook for announcing new versions to greenkeeper",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "standard",
+    "start": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greenkeeperio/greenkeeper-postpublish.git"
+  },
+  "keywords": [
+    "greenkeeper"
+  ],
+  "author": "Greenkeeper team and other contributors | https://greenkeeper.io",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/greenkeeperio/greenkeeper-postpublish/issues"
+  },
+  "homepage": "http://greenkeeper.io",
+  "dependencies": {
+    "hide-secrets": "1.1.0",
+    "lodash": "4.7.0",
+    "node-emoji": "1.2.1",
+    "nopt": "3.0.6",
+    "npmlog": "2.0.3",
+    "os-homedir": "1.0.1",
+    "request": "2.69.0"
+  },
+  "devDependencies": {
+    "standard": "6.0.8"
+  }
+}
