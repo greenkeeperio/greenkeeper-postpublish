@@ -16,6 +16,8 @@ var rcFlags = rc.get()
 
 var cliFlags = nopt({
   api: String,
+  pkgname: String,
+  pkgversion: String,
   loglevel: [
     'silly',
     'verbose',
@@ -54,13 +56,14 @@ if (flags.version) {
   process.exit(0)
 }
 
-var packageName = process.env['npm_package_name']
-var packageVersion = process.env['npm_package_version']
+var packageName = flags.pkgname || process.env['npm_package_name']
+var packageVersion = flags.pkgversion || process.env['npm_package_version']
 
 if (!packageName || !packageVersion) {
   log.error('postpublish', 'Please add this command to your package.json.')
   log.error('postpublish', 'Like so: "scripts": [{"postpublish": "greenkeeper-postpublish"}]')
   log.error('postpublish', 'Make sure it is listed in the devDependencies as well.')
+  log.error('postpublish', 'Alternatively specify the --pkgname and --pkgversion flags.')
   process.exit(1)
 }
 
