@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "postpublish hook for announcing new versions to greenkeeper",
   "main": "index.js",
+  "bin": "index.js",
   "scripts": {
     "pretest": "standard",
     "start": "./index.js"
