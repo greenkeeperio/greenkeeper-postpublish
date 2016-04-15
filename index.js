@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
 var url = require('url')
+var fs = require('fs')
+var path = require('path')
 
 var _ = require('lodash')
 var emoji = require('node-emoji')
@@ -60,13 +62,23 @@ var packageName = flags.pkgname || process.env['npm_package_name']
 var packageVersion = flags.pkgversion || process.env['npm_package_version']
 
 if (!packageName || !packageVersion) {
-  log.error('postpublish', 'Please add this command to your package.json.')
-  log.error('postpublish', 'Like so: "scripts": [{"postpublish": "greenkeeper-postpublish"}]')
-  log.error('postpublish', 'Make sure it is listed in the devDependencies as well.')
-  log.error('postpublish', 'Alternatively specify the --pkgname and --pkgversion flags.')
-  process.exit(1)
+  var currentPackage
+  try {
+    currentPackage = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json')))
+  } catch (e) {
+    currentPackage = {}
+  }
+  if (!currentPackage.name || !currentPackage.version) {
+    log.error('postpublish', 'Please add this command to your package.json.')
+    log.error('postpublish', 'Like so: "scripts": [{"postpublish": "greenkeeper-postpublish"}]')
+    log.error('postpublish', 'Make sure it is listed in the devDependencies as well.')
+    log.error('postpublish', 'Alternatively specify the --pkgname and --pkgversion flags.')
+    process.exit(1)
+  }
+  packageName = pkg.name
+  packageVersion = pkg.version
 }
-
+log.info('postpublish', 'Use ' + packageName + '@' + packageVersion)
 log.http('postpublish', 'Sending request')
 request({
   method: 'POST',
@@ -83,7 +95,7 @@ request({
   }
 
   if (data.ok) {
-    return console.log('Announced', packageName, packageVersion, 'to Greenkeeper')
+    return console.log('Announced', packageName + '@' + packageVersion, 'to Greenkeeper')
   }
 
   log.error('postpublish',

@@ -25,7 +25,10 @@ it with the `--global` flag then though:
 npm install greenkeeper-postpublish --global
 ```
 
-After that you have to specify the `--pkgname` and `--pkgversion` parameters:
+If you run `greenkeeper-postpublish` in a directory with a `package.json` it will
+parse it and use its `name` and `version`.
+
+You can also specify the `--pkgname` and `--pkgversion` parameters instead:
 
 ```
 greenkeeper-postpublish --pkgname mypackage --pkgversion 4.2.0
