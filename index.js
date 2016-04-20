@@ -68,6 +68,7 @@ if (!packageName || !packageVersion) {
   } catch (e) {
     currentPackage = {}
   }
+
   if (!currentPackage.name || !currentPackage.version) {
     log.error('postpublish', 'Please add this command to your package.json.')
     log.error('postpublish', 'Like so: "scripts": [{"postpublish": "greenkeeper-postpublish"}]')
@@ -75,8 +76,8 @@ if (!packageName || !packageVersion) {
     log.error('postpublish', 'Alternatively specify the --pkgname and --pkgversion flags.')
     process.exit(1)
   }
-  packageName = pkg.name
-  packageVersion = pkg.version
+  packageName = currentPackage.name
+  packageVersion = currentPackage.version
 }
 log.info('postpublish', 'Use ' + packageName + '@' + packageVersion)
 log.http('postpublish', 'Sending request')
