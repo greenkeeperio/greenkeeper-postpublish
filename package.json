@@ -22,6 +22,7 @@
   },
   "homepage": "http://greenkeeper.io",
   "dependencies": {
+    "@greenkeeper/flags": "^1.0.0",
     "hide-secrets": "1.1.0",
     "lodash": "4.7.0",
     "node-emoji": "1.2.1",

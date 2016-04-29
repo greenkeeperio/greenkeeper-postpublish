@@ -6,52 +6,17 @@ var path = require('path')
 
 var _ = require('lodash')
 var emoji = require('node-emoji')
-var hideSecrets = require('hide-secrets')
+var flags = require('@greenkeeper/flags')
 var request = require('request')
-var nopt = require('nopt')
 var log = require('npmlog')
 
-var rc = require('./lib/rc')
 var pkg = require('./package.json')
-
-var rcFlags = rc.get()
-
-var cliFlags = nopt({
-  api: String,
-  pkgname: String,
-  pkgversion: String,
-  loglevel: [
-    'silly',
-    'verbose',
-    'info',
-    'http',
-    'warn',
-    'error',
-    'silent'
-  ]
-}, {
-  s: ['--loglevel', 'silent'],
-  d: ['--loglevel', 'info'],
-  dd: ['--loglevel', 'verbose'],
-  ddd: ['--loglevel', 'silly'],
-  silent: ['--loglevel', 'silent'],
-  verbose: ['--loglevel', 'verbose'],
-  quiet: ['--loglevel', 'warn']
-})
-
-var flags = _.assign({}, rcFlags, cliFlags)
 
 log.levels.http = 1500
 
 log.level = flags.loglevel || 'info'
 log.headingStyle = {fg: 'white'}
 log.heading = process.platform === 'darwin' ? emoji.get('palm_tree') + ' ' : ''
-
-flags.api = url.parse(flags.api || 'https://api.greenkeeper.io/').format()
-
-log.silly('cli', 'rc arguments', _.omit(hideSecrets(rcFlags), 'argv'))
-log.silly('cli', 'cli arguments', _.omit(hideSecrets(cliFlags), 'argv'))
-log.verbose('cli', 'arguments', _.omit(hideSecrets(flags), 'argv'))
 
 if (flags.version) {
   console.log(pkg.version || 'development')
