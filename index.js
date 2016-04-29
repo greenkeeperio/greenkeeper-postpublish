@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 
-var url = require('url')
 var fs = require('fs')
 var path = require('path')
 
-var _ = require('lodash')
 var emoji = require('node-emoji')
 var flags = require('@greenkeeper/flags')
 var request = require('request')

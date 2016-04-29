@@ -4,7 +4,7 @@
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
-    "pretest": "standard",
+    "test": "standard",
     "start": "./index.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
