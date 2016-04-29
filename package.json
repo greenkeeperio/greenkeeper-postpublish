@@ -1,16 +1,16 @@
 {
   "name": "greenkeeper-postpublish",
-  "version": "1.0.0",
   "description": "postpublish hook for announcing new versions to greenkeeper",
   "main": "index.js",
   "bin": "index.js",
   "scripts": {
     "pretest": "standard",
-    "start": "./index.js"
+    "start": "./index.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/greenkeeperio/greenkeeper-postpublish.git"
+    "url": "https://github.com/greenkeeperio/greenkeeper-postpublish.git"
   },
   "keywords": [
     "greenkeeper"
@@ -32,6 +32,7 @@
     "request": "2.69.0"
   },
   "devDependencies": {
-    "standard": "6.0.8"
+    "standard": "6.0.8",
+    "semantic-release": "^4.3.5"
   }
 }
