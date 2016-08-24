@@ -32,7 +32,7 @@
     "request": "^2.74.0"
   },
   "devDependencies": {
-    "standard": "^7.1.2",
+    "standard": "^8.0.0",
     "semantic-release": "^4.3.5"
   }
 }
