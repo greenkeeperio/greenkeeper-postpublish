@@ -1,5 +1,7 @@
 # greenkeeper-postpublish
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/greenkeeperio/greenkeeper-postpublish.svg)](https://greenkeeper.io/)
+
 ## Set up greenkeeper-postpublish
 
 To install `greenkeeper-postpublish` save it to your `devDependencies`:
