@@ -58,7 +58,7 @@ request({
     process.exit(2)
   }
 
-  if (data.ok) {
+  if (data && data.ok) {
     return console.log('Announced', packageName + '@' + packageVersion, 'to Greenkeeper')
   }
 
