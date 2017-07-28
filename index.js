@@ -63,7 +63,7 @@ request({
   }
 
   let errorMessage = ''
-  if (!res.statusCode || !res.statusMessage) {
+  if (!res.statusCode || !res.statusMessage || !res.body) {
     errorMessage = JSON.stringify(res) + '\n' + JSON.stringify(data)
   } else {
     errorMessage = res.statusCode + ' ' +
