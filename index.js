@@ -62,9 +62,14 @@ request({
     return console.log('Announced', packageName + '@' + packageVersion, 'to Greenkeeper')
   }
 
-  log.error('postpublish',
-    res.statusCode + ' ' +
-    res.statusMessage +
-    (res.body.message ? ': ' + res.body.message : '')
-  )
+  let errorMessage = ''
+  if (!res.statusCode || !res.statusMessage) {
+    errorMessage = JSON.stringify(res) + '\n' + JSON.stringify(data)
+  } else {
+    errorMessage = res.statusCode + ' ' +
+      res.statusMessage +
+      (res.body.message ? ': ' + res.body.message : '')
+  }
+
+  log.error('postpublish', errorMessage)
 })
