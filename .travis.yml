@@ -12,6 +12,7 @@ node_js:
   - 4
   - '0.12'
 before_script:
+  - npm install -g npm
   - npm prune
 deploy:
   provider: script
