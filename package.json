@@ -29,7 +29,7 @@
     "nopt": "^4.0.1",
     "npmlog": "^4.0.0",
     "os-homedir": "^1.0.1",
-    "request": "^2.74.0"
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "standard": "^11.0.1",
